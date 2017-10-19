@@ -1,6 +1,12 @@
 {
-    "env": {
-      "browser": true
-    },
-    "extends": "airbnb"
+  "env": {
+    "browser": true
+  },
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": false,
+    "codeFrame": false
+  }
 }

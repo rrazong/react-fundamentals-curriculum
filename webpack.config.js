@@ -1,3 +1,4 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
@@ -17,6 +18,9 @@ const config = {
       { test: /\.css/, use: ['style-loader', 'css-loader'] },
     ],
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   devServer: {
     historyApiFallback: true,
   },
@@ -24,6 +28,13 @@ const config = {
     new HtmlWebpackPlugin({
       template: 'app/index.html',
     }),
+    new CopyWebpackPlugin([
+      {
+        context: path.resolve(__dirname, 'app'),
+        from: 'images',
+        to: 'images',
+      },
+    ]),
   ],
 };
 

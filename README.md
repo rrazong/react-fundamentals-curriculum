@@ -1,3 +1,8 @@
+
+# TODO
+* Add SASS
+* restyle for mobile first, then medium, then large
+
 <img src="https://tylermcginnis.com/tylermcginnis_glasses-300.png" width="300" align="right">
 
 Curriculum for React Fundamentals Course
