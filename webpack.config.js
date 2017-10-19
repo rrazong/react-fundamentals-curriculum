@@ -1,10 +1,10 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var path = require('path');
-var webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
 
-var config = {
+const config = {
   entry: [
-    './app/index.js',
+    './app/index.jsx',
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -13,8 +13,8 @@ var config = {
   },
   module: {
     rules: [
-      { test: /\.js$/, use: 'babel-loader' },
-      { test: /\.css/, use: [ 'style-loader', 'css-loader' ] },
+      { test: /\.(js|jsx)$/, use: 'babel-loader' },
+      { test: /\.css/, use: ['style-loader', 'css-loader'] },
     ],
   },
   devServer: {
@@ -23,16 +23,16 @@ var config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'app/index.html',
-    })
-  ]
+    }),
+  ],
 };
 
 if (process.env.NODE_ENV === 'production') {
   config.plugins.push(
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      }
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      },
     }),
     new webpack.optimize.UglifyJsPlugin(),
   );
