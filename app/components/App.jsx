@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import CityForm from './CityForm';
+import Details from './Details';
 import Forecast from './Forecast';
 
 const Nav = () => (
@@ -21,12 +22,6 @@ const Home = () => (
   </div>
 );
 
-const Detail = () => (
-  <div className="detail">
-    <p>Detail of this city and day</p>
-  </div>
-);
-
 const App = () => (
   <Router>
     <div className="app">
@@ -34,7 +29,7 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/forecast" component={Forecast} />
-        <Route path="/detail" component={Detail} />
+        <Route path="/details/:city" component={Details} />
       </Switch>
     </div>
   </Router>

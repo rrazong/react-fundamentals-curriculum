@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { parse } from 'query-string';
+import { parse, stringify } from 'query-string';
 import Day from './Day';
 import Loading from './Loading';
 
@@ -18,6 +18,17 @@ class Forecast extends React.Component {
     },
   }
 
+  constructor(props) {
+    super(props);
+
+    this.forecastApiQuery = stringify({
+      APPID: 'b714ec74bbab5650795063cb0fdf5fbe',
+      cnt: 5,
+      type: 'accurate',
+      units: 'imperial',
+    });
+  }
+
   state = {
     forecast: [],
     isLoading: true,
@@ -26,11 +37,10 @@ class Forecast extends React.Component {
   componentDidMount() {
     const { location: { search } } = this.props;
     const { city } = parse(search);
-    const forecastApiUrl = `http://api.openweathermap.org/data/2.5/forecast/daily?q=${encodeURI(city)}&type=accurate&APPID=b714ec74bbab5650795063cb0fdf5fbe&cnt=5`;
+    const forecastApiUrl = `http://api.openweathermap.org/data/2.5/forecast/daily?${this.forecastApiQuery}&q=${encodeURI(city)}`;
 
     axios.get(forecastApiUrl)
       .then((result) => {
-        console.log(result.data.list);
         this.setState(() => ({
           forecast: result.data.list,
           isLoading: false,
@@ -57,7 +67,7 @@ class Forecast extends React.Component {
         <ul className="forecast-days">
           {
             forecast.map(day => (
-              <Day dayInfo={day} key={day.dt} />
+              <Day city={city} dayInfo={day} key={day.dt} />
             ))
           }
         </ul>

@@ -86,12 +86,14 @@ ul {
   text-decoration: none;
 }
 
+.details,
 .forecast {
   align-items: stretch;
   display: flex;
   flex-direction: column;
 }
 
+.details-city,
 .forecast-city {
   font-size: 4rem;
   margin: 2rem auto;
@@ -106,20 +108,40 @@ ul {
 
 .day {
   align-items: center;
+  color: black;
   display: flex;
   flex-direction: column;
   margin: 2rem;
+  text-decoration: none;
 }
 
-.day-date {
-  font-size: 2rem;
-}
-
-.day-description {
+.day-description,
+.details-description {
   text-transform: capitalize;
 }
 
-.day-icon {
+.details-description,
+.details-max,
+.details-min {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.weatherIcon {
+  align-items: center;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  font-weight: 300;
+}
+
+.weatherIcon-date {
+  font-size: 2rem;
+}
+
+.weatherIcon-icon {
   width: 7rem;
   height: 7rem;
 }

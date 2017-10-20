@@ -1,30 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import WeatherIcon from './WeatherIcon';
 
 const Day = (props) => {
-  const { dt: daySeconds, weather } = props.dayInfo;
-  const date = new Date(daySeconds * 1000);
-  const [{ description, icon }] = weather;
+  const { city, dayInfo: { dt: daySeconds, temp: { min, max }, weather } } = props;
+  const time = daySeconds * 1000;
+  const [{ description, icon: iconCode }] = weather;
 
   return (
-    <li className="day">
-      <time
-        className="day-date"
-        dateTime={date.toUTCString()}
+    <li>
+      <Link
+        className="day"
+        to={{
+          pathname: `/details/${city}`,
+          state: {
+            description,
+            iconCode,
+            time,
+            min,
+            max,
+          },
+        }}
       >
-        {date.toDateString()}
-      </time>
-      <img
-        alt={description}
-        className="day-icon"
-        src={`/images/weather-icons/${icon}.svg`}
-      />
-      <p className="day-description">{description}</p>
+        <WeatherIcon
+          time={time}
+          iconCode={iconCode}
+          description={description}
+        />
+        <p className="day-description">{description}</p>
+      </Link>
     </li>
   );
 };
 
 Day.propTypes = {
+  city: PropTypes.string.isRequired,
   dayInfo: PropTypes.shape({
     dt: PropTypes.number.isRequired,
     weather: PropTypes.array.isRequired,
