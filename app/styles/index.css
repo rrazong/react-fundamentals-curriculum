@@ -1,5 +1,4 @@
 html {
-  color: white;
   font-family: "Open Sans", Arial;
   font-size: 14px;
   height: 100%;
@@ -8,6 +7,16 @@ html {
 body {
   height: 100%;
   margin: 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 #app, .app {
@@ -32,7 +41,7 @@ body {
 }
 
 .home .cityForm {
-  width: 600px;
+  width: 43rem;
 }
 
 .cityForm-label {
@@ -42,11 +51,11 @@ body {
 
 .cityForm-input {
   border-radius: 0.5rem;
-  border-width: 0px;
+  border-width: 0;
   font-size: 2rem;
   margin: 2rem;
   padding: 0.5rem;
-  width: 300px;
+  width: 21rem;
 }
 
 .cityForm-button {
@@ -59,6 +68,11 @@ body {
   padding: 0.5rem 2rem;
 }
 
+.cityForm-button:disabled {
+  background-color: gray;
+  color: lightgray;
+}
+
 .nav {
   align-items: center;
   background-color: orange;
@@ -66,4 +80,46 @@ body {
   justify-content: space-between;
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.nav-title {
+  text-decoration: none;
+}
+
+.forecast {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+.forecast-city {
+  font-size: 4rem;
+  margin: 2rem auto;
+}
+
+.forecast-days {
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: 300;
+  justify-content: space-around;
+}
+
+.day {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+
+.day-date {
+  font-size: 2rem;
+}
+
+.day-description {
+  text-transform: capitalize;
+}
+
+.day-icon {
+  width: 7rem;
+  height: 7rem;
 }

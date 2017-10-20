@@ -1,5 +1,6 @@
 
 # TODO
+* Convert to Redux
 * Add SASS
 * restyle for mobile first, then medium, then large
 

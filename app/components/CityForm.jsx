@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { stringify } from 'query-string';
 
 class CityForm extends React.Component {
   static propTypes = {
@@ -36,13 +38,23 @@ class CityForm extends React.Component {
             id="city"
             className="cityForm-input"
             onChange={this.onChange}
+            placeholder="City, State"
             type="text"
             value={city}
           />
         </label>
-        <button className="cityForm-button">
-          Get Weather
-        </button>
+        <Link to={{
+          pathname: '/forecast',
+          search: stringify({ city }),
+        }}
+        >
+          <button
+            className="cityForm-button"
+            disabled={this.state.city === ''}
+          >
+            Get Weather
+          </button>
+        </Link>
       </div>
     );
   }
