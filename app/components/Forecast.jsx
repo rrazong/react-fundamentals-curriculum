@@ -37,7 +37,7 @@ class Forecast extends React.Component {
   componentDidMount() {
     const { location: { search } } = this.props;
     const { city } = parse(search);
-    const forecastApiUrl = `http://api.openweathermap.org/data/2.5/forecast/daily?${this.forecastApiQuery}&q=${encodeURI(city)}`;
+    const forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast/daily?${this.forecastApiQuery}&q=${encodeURI(city)}`;
 
     axios.get(forecastApiUrl)
       .then((result) => {
